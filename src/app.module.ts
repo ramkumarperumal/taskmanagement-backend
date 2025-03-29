@@ -8,6 +8,7 @@ import { TasksModule } from './modules/tasks/tasks.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './guards/roles.guard';
+import { BullModule } from '@nestjs/bullmq';
 
 @Module({
   imports: [
@@ -17,6 +18,13 @@ import { RolesGuard } from './guards/roles.guard';
         uri: process.env.MONOGODB_URI,
       }),
     }),
+    BullModule.forRoot({
+      connection: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
+
     AuthModule,
     UsersModule,
     TasksModule,

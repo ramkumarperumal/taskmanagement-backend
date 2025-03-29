@@ -26,6 +26,8 @@ import { Roles } from 'src/decorators/roles.decorators';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { RolesGuard } from 'src/guards/roles.guard';
 import { isValidObjectId } from 'mongoose';
+import { InjectQueue } from '@nestjs/bullmq';
+import { Queue } from 'bullmq';
 
 @Controller('tasks')
 export class TasksController {
@@ -46,6 +48,7 @@ export class TasksController {
         ResponseStatus.BAD_REQUEST,
       );
     }
+    return task;
   }
 
   async validateUserTask(task_id, req) {
@@ -136,10 +139,23 @@ export class TasksController {
     @Body() payload: UpdateTaskDto,
   ) {
     try {
-      await this.validateTaskById(id);
+      const task = await this.validateTaskById(id);
+      const logged_id = req['user']['_id'];
       await this.validateUserTask(id, req);
       let where = { _id: id };
-
+      if (task.status !== payload.status) {
+        console.log(logged_id, task.assignee, task.created_by);
+        const notifyPayload = {
+          task_id: id,
+          notify_to:
+            logged_id === String(task.assignee['_id'])
+              ? task.created_by['_id']
+              : task.assignee['_id'],
+          notification_content: `${task.task_name} status is updated to ${payload.status}`,
+          updated_by: logged_id,
+        };
+        await this.tasksService.taskNotify(notifyPayload);
+      }
       const res = await this.tasksService.update(where, payload);
       return responseStructure(res, 'Task updated successfully');
     } catch (err) {
