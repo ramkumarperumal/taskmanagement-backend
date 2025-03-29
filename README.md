@@ -25,6 +25,8 @@ $ npm run start:prod
 - MONOGODB_URI - mongodb uri (eg: mongodb://localhost:27017/taskmanagement)
 - JWT_SECRET_KEY - secret key to create jwt token (eg: mysecretkey)
 - JWT_EXPIRESIN - expiry time for jwt token (eg: 24h)
+- REDIS_HOST - redis host (eg: localhost)
+- REDIS_PORT - redis port (eg: 6379)
 
 ## Login
 

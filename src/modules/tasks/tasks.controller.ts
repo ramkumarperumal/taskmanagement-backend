@@ -144,7 +144,6 @@ export class TasksController {
       await this.validateUserTask(id, req);
       let where = { _id: id };
       if (task.status !== payload.status) {
-        console.log(logged_id, task.assignee, task.created_by);
         const notifyPayload = {
           task_id: id,
           notify_to:
