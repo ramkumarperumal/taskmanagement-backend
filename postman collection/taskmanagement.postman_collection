@@ -1,0 +1,414 @@
+{
+	"info": {
+		"_postman_id": "439c706d-e09a-4a06-a1f8-82026e7d2cf3",
+		"name": "vitasoft-taskmanagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28800781"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "getAll task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tasks?page=1&count=10&priority=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								},
+								{
+									"key": "priority",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"task_name\": \"frontend design\",\r\n  \"description\": \"\",\r\n  \"due_date\": \"03/29/2025\",\r\n  \"priority\": \"Medium\",\r\n  \"assignee\": \"67e4e1002b28e56c2c522be0\",\r\n  \"status\": \"Todo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tasks/67e77e039da88d008b5cd5be",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks",
+								"67e77e039da88d008b5cd5be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"task_name\": \"frontend design\",\r\n  \"description\": \"frontend design description\",\r\n  \"due_date\": \"03/30/2025\",\r\n  \"priority\": \"Medium\",\r\n  \"assignee\": \"67e4e1002b28e56c2c522be0\",\r\n  \"status\": \"Todo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tasks/67e79c329da88d008b5cdb50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks",
+								"67e79c329da88d008b5cdb50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tasks/67e79c329da88d008b5cdb50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks",
+								"67e79c329da88d008b5cdb50"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "getAll users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"task_name\": \"frontend design\",\r\n  \"description\": \"\",\r\n  \"due_date\": \"03/29/2025\",\r\n  \"priority\": \"Medium\",\r\n  \"assignee\": \"67e4e1002b28e56c2c522be0\",\r\n  \"status\": \"Todo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tasks/67e77e039da88d008b5cd5be",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks",
+								"67e77e039da88d008b5cd5be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"ram\",\r\n  \"last_name\": \"kumar\",\r\n  \"role\": \"Admin\",\r\n  \"phone_number\": \"9876543210\",\r\n  \"address\": \"kottivakkam\",\r\n  \"country\": \"India\",\r\n  \"state\": \"Tamilnadu\",\r\n  \"city\": \"chennai\",\r\n  \"zip_code\": 600041,\r\n  \"password\": \"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/67e4e1002b28e56c2c522be0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"67e4e1002b28e56c2c522be0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tasks/67e79c329da88d008b5cdb50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks",
+								"67e79c329da88d008b5cdb50"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"pramkumar723@gmail.com\",\r\n    \"password\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U0ZTEwMDJiMjhlNTZjMmM1MjJiZTAiLCJlbWFpbCI6ImFkbWluQGFiYy5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3NDMyMzE4MDAsImV4cCI6MTc0MzMxODIwMH0.Dj1lBoLpQciyoiHIedYPbfLUm3ADOOeN5Y_jNynP0ds",
+			"type": "string"
+		}
+	]
+}
